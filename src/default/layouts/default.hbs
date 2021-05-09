@@ -2,6 +2,7 @@
 <html class="default no-js">
 <head>
     <meta charset="utf-8">
+    {{#if model.base}}<base href="{{model.base}}">{{/if}}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{#ifCond model.name '==' project.name}}{{project.name}}{{else}}{{model.name}} | {{project.name}}{{/ifCond}}</title>
     <meta name="description" content="Documentation for {{project.name}}">
