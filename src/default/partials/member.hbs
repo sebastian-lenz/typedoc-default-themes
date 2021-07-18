@@ -5,19 +5,19 @@
     {{/if}}
 
     {{#if signatures}}
-        {{> member.signatures}}
+        {{__partials__.member.signatures}}
     {{else}}{{#if hasGetterOrSetter}}
-        {{> member.getterSetter}}
+        {{__partials__.member.getterSetter}}
     {{else}}{{#if isReference}}
-        {{> member.reference}}
+        {{__partials__.member.reference}}
     {{else}}
-        {{> member.declaration}}
+        {{__partials__.member.declaration}}
     {{/if}}{{/if}}{{/if}}
 
     {{#each groups}}
         {{#each children}}
             {{#unless hasOwnDocument}}
-                {{> member}}
+                {{__partials__.member}}
             {{/unless}}
         {{/each}}
     {{/each}}

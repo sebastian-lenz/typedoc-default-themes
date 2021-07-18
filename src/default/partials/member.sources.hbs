@@ -1,12 +1,12 @@
 <aside class="tsd-sources">
     {{#if implementationOf}}
-        <p>Implementation of {{#with implementationOf}}{{> typeAndParent}}{{/with}}</p>
+        <p>Implementation of <With superProps=props props=implementationOf>{{__partials__.typeAndParent}}</With></p>
     {{/if}}
     {{#if inheritedFrom}}
-        <p>Inherited from {{#with inheritedFrom}}{{> typeAndParent}}{{/with}}</p>
+        <p>Inherited from <With superProps=props props=inheritedFrom>{{__partials__.typeAndParent}}</With></p>
     {{/if}}
     {{#if overwrites}}
-        <p>Overrides {{#with overwrites}}{{> typeAndParent}}{{/with}}</p>
+        <p>Overrides <With superProps=props props=overwrites>{{__partials__.typeAndParent}}</With></p>
     {{/if}}
     {{#if sources}}
         <ul>

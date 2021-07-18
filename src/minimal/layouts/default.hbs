@@ -10,12 +10,12 @@
 </head>
 <body>
 
-{{> header}}
+{{__partials__.header}}
 
 <nav class="tsd-navigation secondary">
     <ul>
         {{#each toc.children}}
-            {{> toc}}
+            {{__partials__.toc}}
         {{/each}}
     </ul>
 </nav>
@@ -24,12 +24,12 @@
     <div class="content-wrap">
         {{#if model.readme}}
                 <div class="tsd-panel tsd-typography">
-                        {{#markdown}}{{{model.readme}}}{{/markdown}}
+                        <Markdown>{{{model.readme}}}</Markdown>
                 </div>
         {{/if}}
 
         {{{contents}}}
-        {{> footer}}
+        {{__partials__.footer}}
     </div>
 </div>
 
@@ -37,7 +37,7 @@
 {{ JS }}
 </script>
 
-{{> analytics}}
+{{__partials__.analytics}}
 
 </body>
 </html>

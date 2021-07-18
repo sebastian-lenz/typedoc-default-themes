@@ -1,16 +1,16 @@
 <ul class="tsd-hierarchy">
     {{#each types}}
         <li>
-            {{#if ../isTarget}}
+            {{#if superProps.isTarget}}
                 <span class="target">{{this}}</span>
             {{else}}
-                {{#compact}}{{> type}}{{/compact}}
+                <Compact>{{__partials__.type}}</Compact>
             {{/if}}
 
             {{#if @last}}
-                {{#with ../next}}
-                    {{> hierarchy}}
-                {{/with}}
+                <With superProps=props props=superProps.next>
+                    {{__partials__.hierarchy}}
+                </With>
             {{/if}}
         </li>
     {{/each}}

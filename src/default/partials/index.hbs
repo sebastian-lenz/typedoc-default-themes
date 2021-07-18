@@ -26,7 +26,7 @@
                     <section class="tsd-index-section {{cssClasses}}">
                         {{#if categories}}
                             {{#each categories}}
-                                <h3>{{#if title}}{{title}} {{/if}}{{../title}}</h3>
+                                <h3>{{#if title}}{{title}} {{/if}}{{superProps.title}}</h3>
                                 <ul class="tsd-index-list">
                                     {{#each children}}
                                         <li class="{{cssClasses}}"><a href="{{relativeURL url}}" class="tsd-kind-icon">{{#if name}}{{{wbr name}}}{{else}}<em>{{{wbr kindString}}}</em>{{/if}}</a></li>

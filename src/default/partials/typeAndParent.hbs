@@ -1,13 +1,13 @@
-{{#compact}}
+<Compact>
     {{#if this}}
         {{#if elementType}}
-            {{#with elementType}}
-                {{> typeAndParent}}
-            {{/with}}
+            <With superProps=props props=elementType>
+                {{__partials__.typeAndParent}}
+            </With>
             []
         {{else}}
             {{#if reflection}}
-                {{#ifSignature reflection}}
+                <IfSignature cond=reflection>
                     {{#if reflection.parent.parent.url}}
                         <a href="{{relativeURL reflection.parent.parent.url}}">{{reflection.parent.parent.name}}</a>
                     {{else}}
@@ -19,7 +19,8 @@
                     {{else}}
                         {{reflection.parent.name}}
                     {{/if}}
-                {{else}}
+                </IfSignature>
+                <IfNotSignature cond=reflection>
                     {{#if reflection.parent.url}}
                         <a href="{{relativeURL reflection.parent.url}}">{{reflection.parent.name}}</a>
                     {{else}}
@@ -31,7 +32,7 @@
                     {{else}}
                         {{reflection.name}}
                     {{/if}}
-                {{/ifSignature}}
+                </IfNotSignature>
             {{else}}
                 {{this}}
             {{/if}}
@@ -39,4 +40,4 @@
     {{else}}
         void
     {{/if}}
-{{/compact}}
+</Compact>

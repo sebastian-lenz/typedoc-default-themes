@@ -1,12 +1,12 @@
 {{#unless hideSources}}
-    {{> member.sources}}
+    {{__partials__.member.sources}}
 {{/unless}}
 
-{{> comment}}
+{{__partials__.comment}}
 
 {{#if typeParameters}}
     <h4 class="tsd-type-parameters-title">Type parameters</h4>
-    {{> typeParameters}}
+    {{__partials__.typeParameters}}
 {{/if}}
 
 {{#if parameters}}
@@ -14,27 +14,27 @@
     <ul class="tsd-parameters">
         {{#each parameters}}
             <li>
-                <h5>{{#compact}}
+                <h5><Compact>
                     {{#each flags}}
                         <span class="tsd-flag ts-flag{{this}}">{{this}}</span>&nbsp;
                     {{/each}}
                     {{#if flags.isRest}}<span class="tsd-signature-symbol">...</span>{{/if}}
                     {{name}}:&nbsp;
-                    {{#with type}}{{>type}}{{/with}}
+                    <With superProps=props props=type>{{__partials__.type}}</With>
                     {{#if defaultValue}}
                         <span class="tsd-signature-symbol">
                         &nbsp;=&nbsp;
                         {{defaultValue}}
                         </span>
                     {{/if}}
-                {{/compact}}</h5>
+                </Compact></h5>
 
-                {{> comment}}
+                {{__partials__.comment}}
 
                 {{#if type.declaration}}
-                    {{#with type.declaration}}
-                        {{> parameter}}
-                    {{/with}}
+                    <With superProps=props props=type.declaration>
+                        {{__partials__.parameter}}
+                    </With>
                 {{/if}}
             </li>
         {{/each}}
@@ -42,15 +42,15 @@
 {{/if}}
 
 {{#if type}}
-    <h4 class="tsd-returns-title">Returns {{#compact}}{{#with type}}{{>type}}{{/with}}{{/compact}}</h4>
+    <h4 class="tsd-returns-title">Returns <Compact><With superProps=props props=type>{{__partials__.type}}</With></Compact></h4>
 
     {{#if comment.returns}}
-        {{#markdown}}{{{comment.returns}}}{{/markdown}}
+        <Markdown>{{{comment.returns}}}</Markdown>
     {{/if}}
 
     {{#if type.declaration}}
-        {{#with type.declaration}}
-            {{> parameter}}
-        {{/with}}
+        <With superProps=props props=type.declaration>
+            {{__partials__.parameter}}
+        </With>
     {{/if}}
 {{/if}}

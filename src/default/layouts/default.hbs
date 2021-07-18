@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{{#ifCond model.name '==' project.name}}{{project.name}}{{else}}{{model.name}} | {{project.name}}{{/ifCond}}</title>
+    <title><IfCond cond="model.name '==' project.name">{{project.name}}</IfCond><IfNotCond cond="model.name '==' project.name">{{model.name}} | {{project.name}}</IfNotCond></title>
     <meta name="description" content="Documentation for {{project.name}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -12,7 +12,7 @@
 </head>
 <body>
 
-{{> header}}
+{{__partials__.header}}
 
 <div class="container container-main">
     <div class="row">
@@ -23,7 +23,7 @@
             <nav class="tsd-navigation primary">
                 <ul>
                     {{#each navigation.children}}
-                        {{> navigation}}
+                        {{__partials__.navigation}}
                     {{/each}}
                 </ul>
             </nav>
@@ -31,7 +31,7 @@
             <nav class="tsd-navigation secondary menu-sticky">
                 <ul class="before-current">
                     {{#each toc.children}}
-                        {{> toc.root}}
+                        {{__partials__.toc.root}}
                     {{/each}}
                 </ul>
             </nav>
@@ -39,12 +39,12 @@
     </div>
 </div>
 
-{{> footer}}
+{{__partials__.footer}}
 
 <div class="overlay"></div>
 <script src="{{relativeURL "assets/js/main.js"}}"></script>
 
-{{> analytics}}
+{{__partials__.analytics}}
 
 </body>
 </html>

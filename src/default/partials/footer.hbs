@@ -1,12 +1,12 @@
 
-<footer{{#unless settings.hideGenerator}} class="with-border-bottom"{{/unless}}>
+<footer conditional="#unless settings.hideGenerator class=with-border-bottom /unless">
     <div class="container">
         <h2>Legend</h2>
         <div class="tsd-legend-group">
             {{#each legend}}
                 <ul class="tsd-legend">
-                    {{#each .}}
-                        <li class="{{#compact}}{{#each classes}} {{.}}{{/each}}{{/compact}}"><span class="tsd-kind-icon">{{name}}</span></li>
+                    {{#each props}}
+                        <li class="<Compact>#each classes . /each</Compact>"><span class="tsd-kind-icon">{{name}}</span></li>
                     {{/each}}
                 </ul>
             {{/each}}

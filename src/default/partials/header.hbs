@@ -48,13 +48,13 @@
         <div class="container">
             {{#if model.parent}} {{! Don't show breadcrumbs on main project page, it is the root page. !}}
                 <ul class="tsd-breadcrumb">
-                    {{#with model}}{{> breadcrumb}}{{/with}}
+                    <With superProps=props props=model>{{__partials__.breadcrumb}}</With>
                 </ul>
             {{/if}}
-            <h1>{{#compact}}
-                {{#ifCond model.kindString "!==" "Project" }}
+            <h1><Compact>
+                <IfCond cond="model.kindString '!==' 'Project' ">
                     {{model.kindString}}&nbsp;
-                {{/ifCond}}
+                </IfCond>
                 {{model.name}}
                 {{#if model.typeParameters}}
                     &lt;
@@ -64,7 +64,7 @@
                     {{/each}}
                     &gt;
                 {{/if}}
-            {{/compact}}</h1>
+            </Compact></h1>
         </div>
     </div>
 </header>

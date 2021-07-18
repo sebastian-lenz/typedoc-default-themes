@@ -1,22 +1,22 @@
-{{#with model}}
+<With superProps=props props=model>
     {{#if hasComment}}
         <section class="tsd-panel tsd-comment">
-            {{> comment}}
+            {{__partials__.comment}}
         </section>
     {{/if}}
-{{/with}}
+</With>
 
 {{#if model.typeParameters}}
     <section class="tsd-panel tsd-type-parameters">
         <h3>Type parameters</h3>
-        {{#with model}}{{> typeParameters}}{{/with}}
+        <With superProps=props props=model>{{__partials__.typeParameters}}</With>
     </section>
 {{/if}}
 
 {{#if model.typeHierarchy}}
     <section class="tsd-panel tsd-hierarchy">
         <h3>Hierarchy</h3>
-        {{#with model.typeHierarchy}}{{> hierarchy}}{{/with}}
+        <With superProps=props props=model.typeHierarchy>{{__partials__.hierarchy}}</With>
     </section>
 {{/if}}
 
@@ -25,7 +25,7 @@
         <h3>Implements</h3>
         <ul class="tsd-hierarchy">
             {{#each model.implementedTypes}}
-                <li>{{#compact}}{{> type}}{{/compact}}</li>
+                <li><Compact>{{__partials__.type}}</Compact></li>
             {{/each}}
         </ul>
     </section>
@@ -36,7 +36,7 @@
         <h3>Implemented by</h3>
         <ul class="tsd-hierarchy">
             {{#each model.implementedBy}}
-                <li>{{#compact}}{{> type}}{{/compact}}</li>
+                <li><Compact>{{__partials__.type}}</Compact></li>
             {{/each}}
         </ul>
     </section>
@@ -45,35 +45,35 @@
 {{#if model.signatures}}
     <section class="tsd-panel">
         <h3 class="tsd-before-signature">Callable</h3>
-        {{#with model}}{{> member.signatures}}{{/with}}
+        <With superProps=props props=model>{{__partials__.member.signatures}}</With>
     </section>
 {{/if}}
 
 {{#if model.indexSignature}}
     <section class="tsd-panel {{model.cssClasses}}">
         <h3 class="tsd-before-signature">Indexable</h3>
-        <div class="tsd-signature tsd-kind-icon">{{#compact}}
+        <div class="tsd-signature tsd-kind-icon"><Compact>
             <span class="tsd-signature-symbol">[</span>
             {{#each model.indexSignature.parameters}}
-                {{name}}:&nbsp;{{#with type}}{{>type}}{{/with}}
+                {{name}}:&nbsp;<With superProps=props props=type>{{__partials__.type}}</With>
             {{/each}}
             <span class="tsd-signature-symbol">]:&nbsp;</span>
-            {{#with model.indexSignature.type}}{{>type}}{{/with}}
-        {{/compact}}</div>
+            <With superProps=props props=model.indexSignature.type>{{__partials__.type}}</With>
+        </Compact></div>
 
-        {{#with model.indexSignature}}
-            {{> comment}}
-        {{/with}}
+        <With superProps=props props=model.indexSignature>
+            {{__partials__.comment}}
+        </With>
 
         {{#if model.indexSignature.type.declaration}}
-            {{#with model.indexSignature.type.declaration}}
-                {{> parameter}}
-            {{/with}}
+            <With superProps=props props=model.indexSignature.type.declaration>
+                {{__partials__.parameter}}
+            </With>
         {{/if}}
     </section>
 {{/if}}
 
-{{#with model}}
-    {{> index}}
-    {{> members}}
-{{/with}}
+<With superProps=props props=model>
+    {{__partials__.index}}
+    {{__partials__.members}}
+</With>

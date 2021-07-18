@@ -1,0 +1,3 @@
+[submodule "typedoc"]
+	path = typedoc
+	url = https://github.com/TypeStrong/typedoc

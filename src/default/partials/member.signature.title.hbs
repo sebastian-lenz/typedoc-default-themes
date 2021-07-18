@@ -1,12 +1,12 @@
 {{#unless hideName}}
     {{{wbr name}}}
-{{else}} {{! This ugliness goes away when we stop naming constructor signatures "new X"}}
-    {{#ifCond kindString "===" "Constructor signature"}}
+{{else}}
+    <IfCond cond="kindString '===' 'Constructor signature'">
         {{#if flags.isAbstract}}
             <span class="tsd-signature-symbol">abstract </span>
         {{/if}}
         <span class="tsd-signature-symbol">new </span>
-    {{/ifCond}}
+    </IfCond>
 {{/unless}}
 {{#if typeParameters}}
     &lt;
@@ -26,7 +26,7 @@
         {{#if defaultValue}}?{{/if}}
         :&nbsp;
     </span>
-    {{#with type}}{{>type}}{{/with}}
+    <With superProps=props props=type>{{__partials__.type}}</With>
 {{/each}}
 <span class="tsd-signature-symbol">)</span>
 {{#if type}}
@@ -35,7 +35,7 @@
     {{else}}
         <span class="tsd-signature-symbol">: </span>
     {{/if}}
-    {{#with type}}
-        {{>type}}
-    {{/with}}
+    <With superProps=props props=type>
+        {{__partials__.type}}
+    </With>
 {{/if}}
